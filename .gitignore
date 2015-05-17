@@ -1,0 +1,8 @@
+/vendor
+/node_modules
+.env
+.DS_Store
+Thumbs.db
+.idea
+.vagrant/
+tests/_output/*
