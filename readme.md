@@ -4,16 +4,20 @@ The purpose of this is to easily provide the [Laravel Homestead](https://github.
 
 ## Installation
 
-Simply copy these files from this repo into your fresh Laravel application:
+Add ```"svpernova09/homesteadskeleton": "dev-feature/package"``` to your project's ```composer.json``` in require-dev.
+Add to ```app/Providers/AppServiceProvider.php```:
 
-* scripts/
-* aliases
-* Homstead.yaml
-* Vagrantfile
+```
+if ($this->app->environment() == 'local') {
+    $this->app->register('Svpernova09\HomesteadSkeleton\HomesteadSkeletonServiceProvider');
+}
+```
 
 ## Usage
 
-See [Official Documentation](http://laravel.com/docs/5.0/homestead)
+```php artisan homestead:create```
+
+Further Homestead configuration see [Official Documentation](http://laravel.com/docs/5.0/homestead)
 
 ## Caution
 
