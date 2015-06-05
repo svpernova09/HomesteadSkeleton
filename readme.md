@@ -2,6 +2,8 @@
 
 The purpose of this is to easily provide the [Laravel Homestead](https://github.com/laravel/homestead) Vagrant environment without having to rely on using the ```homestead``` command line application. Another use case would be if you do not have / do not want PHP locally installed on your system.
 
+You will at least need composer on your system to use this artisan command. If you do not have / want composer on your local system, copy everything in the files/ folder to the root of your Laravel project.
+
 ## Installation
 
 Add ```"svpernova09/homesteadskeleton": "1.0.*``` to your project's ```composer.json``` in require-dev.
