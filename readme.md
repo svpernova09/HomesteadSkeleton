@@ -5,7 +5,8 @@ The purpose of this is to easily provide the [Laravel Homestead](https://github.
 ## Installation
 
 Add ```"svpernova09/homesteadskeleton": "~1.0"``` to your project's ```composer.json``` in require-dev.
-Add to ```app/Providers/AppServiceProvider.php```:
+Run ```composer update```
+Add to ```app/Providers/AppServiceProvider.php``` register() method:
 
 ```
 if ($this->app->environment() == 'local') {
