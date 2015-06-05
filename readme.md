@@ -14,3 +14,7 @@ Simply copy these files from this repo into your fresh Laravel application:
 ## Usage
 
 See [Official Documentation](http://laravel.com/docs/5.0/homestead)
+
+## Caution
+
+If you plan on using this in multiple projects or alongside Homestead's normal usage, ensure you change ```vb.name``` in ```src/scripts/homestead.rb``` to something unique.
