@@ -76,7 +76,7 @@ class HomesteadCreateCommand extends Command
 
     /**
      * Return path to the Laravel project root
-     * @return mixed
+     * @return string
      */
     public function getRootPath()
     {
@@ -90,7 +90,7 @@ class HomesteadCreateCommand extends Command
 
     /**
      * Return path to Homestead files in our project
-     * @return mixed
+     * @return string
      */
     public function getSourcePath()
     {
