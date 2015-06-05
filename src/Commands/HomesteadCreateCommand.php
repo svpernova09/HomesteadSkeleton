@@ -40,22 +40,29 @@ class HomesteadCreateCommand extends Command
         if (!file_exists($rootPath . 'scripts'))
         {
             mkdir($rootPath . 'scripts');
-            copy($sourcePath . 'scripts/after.sh', $rootPath . 'scripts/after.sh');
-            copy($sourcePath . 'scripts/blackfire.sh', $rootPath . 'scripts/blackfire.sh');
-            copy($sourcePath . 'scripts/create-mysql.sh', $rootPath . 'scripts/create-mysql.sh');
-            copy($sourcePath . 'scripts/create-postgres.sh', $rootPath . 'scripts/create-postgres.sh');
-            copy($sourcePath . 'scripts/homestead.rb', $rootPath . 'scripts/homestead.rb');
-            copy($sourcePath . 'scripts/serve.sh', $rootPath . 'scripts/serve.sh');
-            copy($sourcePath . 'scripts/serve-hhvm.sh', $rootPath . 'scripts/serve-hhvm.sh');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'after.sh',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'after.sh');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'blackfire.sh',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'blackfire.sh');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'create-mysql.sh',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'create-mysql.sh');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'create-postgres.sh',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'create-postgres.sh');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'homestead.rb',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'homestead.rb');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'serve.sh',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'serve.sh');
+            copy($sourcePath . 'scripts' . DIRECTORY_SEPARATOR . 'serve-hhvm.sh',
+                $rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'serve-hhvm.sh');
 
             $string = Inspiring::quote();
             $pieces = explode(' ', $string);
             $vbName = strtolower(array_pop($pieces));
 
             // Update virtualbox name
-            $file = file_get_contents($rootPath . 'scripts/homestead.rb');
+            $file = file_get_contents($rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'homestead.rb');
             $newFile = str_replace("vb.name = 'homestead'", "vb.name = '" . $vbName . "'", $file);
-            file_put_contents($rootPath . 'scripts/homestead.rb', $newFile);
+            file_put_contents($rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'homestead.rb', $newFile);
         }
         else
         {
