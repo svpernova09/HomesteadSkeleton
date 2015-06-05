@@ -29,22 +29,24 @@ class HomesteadCreateCommand extends Command
      */
     public function fire()
     {
-        $rootPath = str_replace('app', '', app_path());
-        $srcPath = str_replace('src/Commands', 'files/', __DIR__);
-        copy($srcPath . 'aliases', $rootPath . 'aliases');
-        copy($srcPath . 'Homestead.yaml', $rootPath . 'Homestead.yaml');
-        copy($srcPath . 'Vagrantfile', $rootPath . 'Vagrantfile');
+        $rootPath = $this->getRootPath();
+        $sourcePath = $this->getSourcePath();
+
+        // Start Copying Files
+        copy($sourcePath . 'aliases', $rootPath . 'aliases');
+        copy($sourcePath . 'Homestead.yaml', $rootPath . 'Homestead.yaml');
+        copy($sourcePath . 'Vagrantfile', $rootPath . 'Vagrantfile');
 
         if (!file_exists($rootPath . 'scripts'))
         {
             mkdir($rootPath . 'scripts');
-            copy($srcPath . 'scripts/after.sh', $rootPath . 'scripts/after.sh');
-            copy($srcPath . 'scripts/blackfire.sh', $rootPath . 'scripts/blackfire.sh');
-            copy($srcPath . 'scripts/create-mysql.sh', $rootPath . 'scripts/create-mysql.sh');
-            copy($srcPath . 'scripts/create-postgres.sh', $rootPath . 'scripts/create-postgres.sh');
-            copy($srcPath . 'scripts/homestead.rb', $rootPath . 'scripts/homestead.rb');
-            copy($srcPath . 'scripts/serve.sh', $rootPath . 'scripts/serve.sh');
-            copy($srcPath . 'scripts/serve-hhvm.sh', $rootPath . 'scripts/serve-hhvm.sh');
+            copy($sourcePath . 'scripts/after.sh', $rootPath . 'scripts/after.sh');
+            copy($sourcePath . 'scripts/blackfire.sh', $rootPath . 'scripts/blackfire.sh');
+            copy($sourcePath . 'scripts/create-mysql.sh', $rootPath . 'scripts/create-mysql.sh');
+            copy($sourcePath . 'scripts/create-postgres.sh', $rootPath . 'scripts/create-postgres.sh');
+            copy($sourcePath . 'scripts/homestead.rb', $rootPath . 'scripts/homestead.rb');
+            copy($sourcePath . 'scripts/serve.sh', $rootPath . 'scripts/serve.sh');
+            copy($sourcePath . 'scripts/serve-hhvm.sh', $rootPath . 'scripts/serve-hhvm.sh');
 
             $string = Inspiring::quote();
             $pieces = explode(' ', $string);
@@ -63,5 +65,29 @@ class HomesteadCreateCommand extends Command
 
         $this->info('Files Copied');
         $this->info('Ready to edit Homestead.yaml!');
+    }
+
+    /**
+     * Return path to the Laravel project root
+     * @return mixed
+     */
+    public function getRootPath()
+    {
+        $appPath = app_path();
+        $folders = explode(DIRECTORY_SEPARATOR, $appPath);
+        array_pop($folders);
+        $rootPath = implode(DIRECTORY_SEPARATOR, $folders);
+
+        return $rootPath . '/';
+    }
+
+    /**
+     * Return path to Homestead files in our project
+     * @return mixed
+     */
+    public function getSourcePath()
+    {
+
+        return str_replace('src' . DIRECTORY_SEPARATOR . 'Commands', 'files' . DIRECTORY_SEPARATOR, __DIR__);
     }
 }
