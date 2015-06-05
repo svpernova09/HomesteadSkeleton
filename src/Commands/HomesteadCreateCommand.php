@@ -3,7 +3,8 @@ namespace Svpernova09\HomesteadSkeleton\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Filesystem\Filesystem;
-class SeedMakeCommand extends GeneratorCommand
+use Illuminate\Console\Command;
+class HomesteadCreateCommand extends Command
 {
     /**
      * The console command name.
@@ -25,6 +26,6 @@ class SeedMakeCommand extends GeneratorCommand
      */
     public function fire()
     {
-
+        $this->info('Homestead:create Command fired');
     }
 }
