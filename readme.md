@@ -23,9 +23,10 @@ if ($this->app->environment() == 'local') {
 
 Once you have followed the installation instructions:```php artisan homestead:create```.
 
-This is designed to only be run once. If you run the command again you will overwrite files and any changes will be lost. You are free to remove this package from Composer once you have your Homestead files in your project root.
+This is designed to only be run once. If you run the command again you will overwrite files and any changes will be lost.
+You are free to remove this package from Composer once you have your Homestead files in your project root.
 
-Further Homestead configuration see [Official Documentation](http://laravel.com/docs/5.0/homestead)
+For further Homestead configuration see [Official Documentation](http://laravel.com/docs/5.1/homestead)
 
 ## Caution
 
