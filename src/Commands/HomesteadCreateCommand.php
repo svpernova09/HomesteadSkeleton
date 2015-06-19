@@ -14,7 +14,10 @@ class HomesteadCreateCommand extends Command
      *
      * @var string
      */
-    protected $name = 'homestead:create';
+    protected $signature = 'homestead:create
+                        {--name= : Name of the virtual machine}
+                        {--hostname= : Hostname of the virtual machine}';
+
     /**
      * The console command description.
      *
@@ -23,11 +26,19 @@ class HomesteadCreateCommand extends Command
     protected $description = 'Copy Homestead Skeleton files to the project root.';
 
     /**
+     *
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * Execute the console command.
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $rootPath = $this->getRootPath();
         $sourcePath = $this->getSourcePath();
@@ -59,9 +70,22 @@ class HomesteadCreateCommand extends Command
             $pieces = explode(' ', $string);
             $vbName = strtolower(array_pop($pieces));
 
+            if ($this->option('name'))
+            {
+                $vbName = $this->option('name');
+            }
+
             // Update virtualbox name
             $file = file_get_contents($rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'homestead.rb');
             $newFile = str_replace("vb.name = 'homestead'", "vb.name = '" . $vbName . "'", $file);
+
+
+            if ($this->option('hostname'))
+            {
+                $hostName = $this->option('hostname');
+                $newFile = str_replace("settings[\"hostname\"] ||= \"homestead\"", "settings[\"hostname\"] ||= \"" . $hostName ."\"", $file);
+            }
+
             file_put_contents($rootPath . 'scripts' . DIRECTORY_SEPARATOR . 'homestead.rb', $newFile);
         }
         else
