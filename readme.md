@@ -19,7 +19,7 @@ if ($this->app->environment() == 'local') {
 }
 ```
 
-## Usage
+## Usage (Laravel)
 
 Once you have followed the installation instructions:```php artisan homestead:create```.
 
@@ -41,6 +41,12 @@ php artisan homestead:create --hostname=YourHostName
 ```
 
 For further Homestead configuration see [Official Documentation](http://laravel.com/docs/5.1/homestead)
+
+## Usage (Non-Laravel)
+
+You don't *have* to use Laravel to take advantage of this package. You just need to manually copy the files from ```vendor/svpernova/homesteadskeleton/files``` to your project root.
+
+Ensure you change ```vb.name``` in ```scripts/homestead.rb``` to something unique.
 
 ## Caution
 
