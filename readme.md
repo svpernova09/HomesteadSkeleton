@@ -26,6 +26,20 @@ Once you have followed the installation instructions:```php artisan homestead:cr
 This is designed to only be run once. If you run the command again you will overwrite files and any changes will be lost.
 You are free to remove this package from Composer once you have your Homestead files in your project root.
 
+If you would like to specify the name of the virtual machine: (Optional)
+
+_This must be a unique or you will get a vagrant warning._
+
+```
+php artisan homestead:create --name=YourName
+```
+
+If you would like to specify the host name of the virtual machine:
+
+```
+php artisan homestead:create --hostname=YourHostName
+```
+
 For further Homestead configuration see [Official Documentation](http://laravel.com/docs/5.1/homestead)
 
 ## Caution
