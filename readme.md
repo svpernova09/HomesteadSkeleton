@@ -1,5 +1,42 @@
 # Homestead Skeleton
 
+## This project is depreciated.
+
+[You can now easily install homestead per project](http://laravel.com/docs/5.1/homestead#per-project-installation)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 The purpose of this is package is to easily provide the [Laravel Homestead](https://github.com/laravel/homestead)
 Vagrant environment without having to rely on using the ```homestead``` command line application.
 Another use case would be if you do not have / do not want PHP locally installed on your system.
